@@ -1,0 +1,23 @@
+{
+  "name": "disney",
+  "version": "1.0.0",
+  "description": "Disney wait time program",
+  "main": "app.js",
+  "dependencies": {
+    "eslint": "^3.1.0",
+    "jshint": "^2.9.2",
+    "wdwjs": "^3.1.6"
+  },
+  "devDependencies": {
+    "eslint": "^3.1.0",
+    "eslint-config-google": "^0.6.0",
+    "eslint-config-standard": "^5.3.5",
+    "eslint-plugin-promise": "^2.0.0",
+    "eslint-plugin-standard": "^2.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
