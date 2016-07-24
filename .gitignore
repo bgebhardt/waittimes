@@ -42,5 +42,6 @@ disney_out
 # ignore eslint
 .eslintrc.js
 
-# ignore visual studio code
+# ignore code editors
 .vscode
+.idea
