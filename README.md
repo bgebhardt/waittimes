@@ -16,21 +16,33 @@ This is a set of scripts to grab waittimes for parks supported by the [wdwJS](ht
 
 # Cleaning up the data 
 
-How to clean up the data files.
+the clean_data.sh script will clean up and combine data files.
 TODO: I should really fix app.js to output it better (all items should be in quotes for CSV to parse right)
 
-```
-# command to fix commas inplace with backup
-# it still leaves an empty extra Goofy's sky school due to the <CR> in that item. :P
-sed -i.bak -e 's/Monsters,/Monsters/g' -e 's/Fire Engine,/Fire Engine/g' -e 's/Streetcars,/Streetcars/g' -e 's/Carriage,/Carriage/g' -e 's/Omnibus,/Omnibus/g' -e 's/^,/California Adventure,Goofys Sky School,/g' *.csv
-mkdir bak
-mv *.bak bak
-cat *.csv > 2016-07-18.csv  # TODO: change the date name when doing this
-grep -v park # removes header
-```
+# Create wait time graphs
 
-header to add to file
+run rideWaitAnalysis.py and pass in name of the csv file created by clean_data.sh
+
+NOTE: there are a lot of assumptions about the directory structure for all these files.  Read the code to figure it out.
+
+# Example Usage
 
 ```
-park	 ride name	 wait time	 status	 date-time
+22:20:23[2421] bgebhardt in ~/code/personal/waittimes/disney_out/2016-07-20 on master*
+⚡ ../../clean_data.sh 2016-07-20.csv
+## processing 2016-07-20.csv...
+## 2016-07-20.csv processing complete
+22:21:06[2422] bgebhardt in ~/code/personal/waittimes/disney_out/2016-07-20 on master*
+⚡ ../../python/rideWaitAnalysis.py 2016-07-20.csv
 ```
+
+# Directory layout assumptions
+2016-07-18 # must be named for the same date as the date in all the csv file names
+├── individual csv files
+├── bak/ # backup after clean_data.sh
+└── figures/ # where the rideWaitAnalysis.py graphs go
+
+# TODO
+
+* put all days together ???
+* come up with an install script to install node_modules (or package it up)
