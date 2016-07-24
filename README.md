@@ -23,7 +23,10 @@ TODO: I should really fix app.js to output it better (all items should be in quo
 
 run rideWaitAnalysis.py and pass in name of the csv file created by clean_data.sh
 
+![example graph](https://github.com/bgebhardt/waittimes/blob/master/California%20Adventure-Radiator%20Springs%20Racers--2016-07-20.png "Example Graph")
+
 NOTE: there are a lot of assumptions about the directory structure for all these files.  Read the code to figure it out.
+
 
 # Example Usage
 
