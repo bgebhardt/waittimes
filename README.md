@@ -28,12 +28,12 @@ NOTE: there are a lot of assumptions about the directory structure for all these
 # Example Usage
 
 ```
-22:20:23[2421] bgebhardt in ~/code/personal/waittimes/disney_out/2016-07-20 on master*
-⚡ ../../clean_data.sh 2016-07-20.csv
+$ ../../clean_data.sh 2016-07-20.csv
 ## processing 2016-07-20.csv...
 ## 2016-07-20.csv processing complete
-22:21:06[2422] bgebhardt in ~/code/personal/waittimes/disney_out/2016-07-20 on master*
-⚡ ../../python/rideWaitAnalysis.py 2016-07-20.csv
+
+$ ../../python/rideWaitAnalysis.py 2016-07-20.csv
+
 ```
 
 # Directory layout assumptions
@@ -46,3 +46,4 @@ NOTE: there are a lot of assumptions about the directory structure for all these
 
 * put all days together ???
 * come up with an install script to install node_modules (or package it up)
+* remove graphs for closed rides or rides with a max wait time of zero.

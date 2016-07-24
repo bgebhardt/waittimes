@@ -25,7 +25,7 @@ def saveGraph(themePark, rideName, rideData, dateStamp, outFileDir):
 
     # plt.show()
 
-    filePath = outFileDir + themePark + "-" + rideName + '.png'
+    filePath = outFileDir + themePark + "-" + rideName + "--" + dateStamp + '.png'
     plt.savefig(filePath)
 
     plt.clf()
