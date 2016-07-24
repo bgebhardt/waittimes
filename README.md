@@ -37,10 +37,13 @@ $ ../../python/rideWaitAnalysis.py 2016-07-20.csv
 ```
 
 # Directory layout assumptions
+
+```
 2016-07-18 # must be named for the same date as the date in all the csv file names
 ├── individual csv files
 ├── bak/ # backup after clean_data.sh
 └── figures/ # where the rideWaitAnalysis.py graphs go
+```
 
 # TODO
 
