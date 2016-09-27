@@ -42,7 +42,7 @@ function printWaitTimesCSV(parkName, waitTimeArray, dateTime) {
   for (var index in waitTimeArray) {
     if (waitTimeArray.hasOwnProperty(index)) {
       var ride = waitTimeArray[index];
-      console.log(parkName + "," + ride.name + "," + ride.waitTime + "," + ride.status + "," + dateTime);
+      console.log("\"" + parkName + "\",\"" + ride.name + "\",\"" + ride.waitTime + "\",\"" + ride.status + "\",\"" + dateTime + "\"");
     }
   }
 }
