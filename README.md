@@ -6,6 +6,8 @@ This is a set of scripts to grab waittimes for parks supported by the [wdwJS](ht
 
 * [cubehouse/wdwJS: Unofficial API for accessing ride wait times and schedules for Disney theme parks]( https://github.com/cubehouse/wdwJS )
 
+## Collecting the data
+
 *app.js* will output the wait times for Disneyland and California Adventure in csv format. Call it like this:
 
 ```
@@ -14,12 +16,11 @@ This is a set of scripts to grab waittimes for parks supported by the [wdwJS](ht
 
 *run disney script.scpt* - a simple AppleScript that runs the command.  I put it into a scheduler to run every 5 minutes.  Yes, cron should do this but I was having a fail at midnight getting it to work so I did this instead. 
 
-# Cleaning up the data 
+## Cleaning up the data 
 
 the clean_data.sh script will clean up and combine data files.
-TODO: I should really fix app.js to output it better (all items should be in quotes for CSV to parse right)
 
-# Create wait time graphs
+## Create wait time graphs
 
 run rideWaitAnalysis.py and pass in name of the csv file created by clean_data.sh
 
@@ -30,8 +31,10 @@ NOTE: there are a lot of assumptions about the directory structure for all these
 
 # Example Usage
 
+Assumes you are running in the directory with all your csv files.
+
 ```
-$ ../../clean_data.sh 2016-07-20.csv
+$ ../../clean_data.sh 2016-07-20
 ## processing 2016-07-20.csv...
 ## 2016-07-20.csv processing complete
 
@@ -50,6 +53,14 @@ $ ../../python/rideWaitAnalysis.py 2016-07-20.csv
 
 # TODO
 
-* put all days together ???
-* come up with an install script to install node_modules (or package it up)
-* remove graphs for closed rides or rides with a max wait time of zero.
+* Data Collection
+	* create a better way to collect the data; node daemon process? get it working with cron?
+* Data clean up
+	* improve clean up to not be so fragile (must be in right directly, etc.)
+	* remove tmp files
+	* put all days together ???
+* Analysis
+	* remove graphs for closed rides or rides with a max wait time of zero.
+* Other
+	* create test cases
+	* come up with an install script to install node_modules (or package it up)
