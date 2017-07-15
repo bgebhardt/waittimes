@@ -45,3 +45,9 @@ disney_out
 # ignore code editors
 .vscode
 .idea
+
+# ignore data output files
+disney_out/*
+
+# ignore misc python example files
+python/3358OS_Code/*
