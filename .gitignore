@@ -53,4 +53,4 @@ disney_out/*
 python/3358OS_Code/*
 
 # ignore logstash sincedb's
-dis_sincedb
+sincedb_disney
