@@ -8,13 +8,13 @@ FILE=$1
 echo "## processing $FILE..."
 
 # combine all the files
-cat *.csv > $FILE.tmp1
+cat *.csv > all_$FILE.tmp1
 
 # clean a few things
-grep -v park $FILE.tmp1 > $FILE.tmp2  # removes header
+grep -v park all_$FILE.tmp1 > all_$FILE.tmp2  # removes header
 
 # add a header
-cat ../header $FILE.tmp2 > $FILE.csv
+cat ../header all_$FILE.tmp2 > all_$FILE.csv
 
 mkdir figures # for saving graphs later
 
