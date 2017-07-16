@@ -12,7 +12,7 @@ var Disneyland = new DisneyAPI.DisneylandMagicKingdom();
 var DisneyCA = new DisneyAPI.DisneylandCaliforniaAdventure();
 
 // print csv header
-console.log("park, ride name, wait time, status, date-time");
+console.log("park, ride_name, wait_time, status, date-time");
 
 // Get Magic Kingdom wait times
 Disneyland.GetWaitTimes(function(err, data) {
@@ -42,7 +42,9 @@ function printWaitTimesCSV(parkName, waitTimeArray, dateTime) {
   for (var index in waitTimeArray) {
     if (waitTimeArray.hasOwnProperty(index)) {
       var ride = waitTimeArray[index];
-      console.log("\"" + parkName + "\",\"" + ride.name + "\",\"" + ride.waitTime + "\",\"" + ride.status + "\",\"" + dateTime + "\"");
+	  // escaping quotes in ride names to be "" instead of single "'s.  Ruby csv importer requires that instead of \".  See:
+	  // [Ruby CSV parsing string with escaped quotes - Stack Overflow](https://stackoverflow.com/questions/14534522/ruby-csv-parsing-string-with-escaped-quotes)
+      console.log("\"" + parkName + "\",\"" + ride.name.replace(/\"/g,'\""') + "\",\"" + ride.waitTime + "\",\"" + ride.status + "\",\"" + dateTime + "\"");
     }
   }
 }
