@@ -23,11 +23,34 @@ Add the following crontab entry to run it every 5 minutes.
 
 *run disney script.scpt* - a simple AppleScript that runs the command.  No longer needed.
 
-## Cleaning up the data 
+## Loading data into ELK stack
+
+### Running it
+
+You can set up the ELK stack by running or following the commands in ```setup-mac.sh```.
+
+You can run the ELK stack on your localhost with ```run-elk.sh```.  This assumes you're running in the waittimes repo directory.  This will start logstash processing csv files from the disney_out directory that you run in the "Collecting the data" step.
+
+Go to kibana at [http://localhost:5601/](http://localhost:5601/) and login with the elastic user.
+
+To kill the elk stack run ```ps -aw | egrep "(kibana|logstash|elasticsearch)"``` and kill each process.  **TODO:** find better way to do this.
+
+### Reseting ELK
+
+To start over:
+
+1. Kill the logstash process.  
+2. In Kibana execute ```DELETE /disney-waittimes``` to delete the index.
+3. Delete the sensedb_disney file in the waittimes directory.  This will make logstash reload all data again.
+4. Run logstash again.  It'll reload everything.
+
+## Graphing data with pandas and matlab
+
+### Cleaning up the data 
 
 the clean_data.sh script will clean up and combine data files.
 
-## Create wait time graphs
+### Create wait time graphs
 
 run rideWaitAnalysis.py and pass in name of the csv file created by clean_data.sh
 
@@ -36,7 +59,7 @@ run rideWaitAnalysis.py and pass in name of the csv file created by clean_data.s
 NOTE: there are a lot of assumptions about the directory structure for all these files.  Read the code to figure it out.
 
 
-# Example Usage
+## Example Usage
 
 Assumes you are running in the directory with all your csv files.  Pass in the date you wish to process.
 
