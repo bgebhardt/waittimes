@@ -4,9 +4,12 @@
 # Assumes you have run setup-mac.sh first
 
 # Assumes you my are running in the root directory of the repo
+# TODO: insert waits between backgrounds?
 elasticsearch &
 kibana &
-logstash -f `pwd`/logstash/logstash-config.config --verbose &
+logstash -f `pwd`/logstash/logstash-config.config --verbose -l `pwd`/logs/ &
+# logstash debug command
+# logstash -f `pwd`/logstash/logstash-debug.config --verbose --debug -l `pwd`/logstash.out
 
 # now you can:
 # Navigate to Kibana at http://localhost:5601/
