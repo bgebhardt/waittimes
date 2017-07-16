@@ -38,14 +38,14 @@ NOTE: there are a lot of assumptions about the directory structure for all these
 
 # Example Usage
 
-Assumes you are running in the directory with all your csv files.  Pass in the date you wish to process.
+Assumes you are running in the directory with all your csv files.
 
 ```
-$ ../clean_data.sh 2016-07-20
+$ ../../clean_data.sh 2016-07-20
 ## processing 2016-07-20.csv...
 ## 2016-07-20.csv processing complete
 
-$ ../python/rideWaitAnalysis.py all_2016-07-20.csv
+$ ../../python/rideWaitAnalysis.py 2016-07-20.csv
 
 ```
 

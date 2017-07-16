@@ -1,5 +1,0 @@
-sys
-os
-pandas
-numpy
-matplotlib

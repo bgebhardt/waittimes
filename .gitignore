@@ -51,6 +51,3 @@ disney_out/*
 
 # ignore misc python example files
 python/3358OS_Code/*
-
-# ignore logstash sincedb's
-dis_sincedb
