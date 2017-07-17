@@ -16,7 +16,7 @@ This is a set of scripts to grab waittimes for parks supported by the [wdwJS](ht
 
 *run_disney.sh* - simple script you can put in cron to run the script periodically.
 
-Add the following crontab entry to run it every 5 minutes. 
+Add the following crontab entry to run it [every 5 minutes](https://crontab.guru/every-5-minutes).
 ```
 */5	*	*	*	*	/Users/bryan/code/personal/waittimes/run_disney.sh
 ```
