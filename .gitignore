@@ -37,7 +37,7 @@ jspm_packages
 .node_repl_history
 
 # ignore waittime output
-disney_out
+disney_out*
 
 # ignore eslint
 .eslintrc.js
