@@ -1,0 +1,137 @@
+[
+  {
+    "_id": "94578bd0-6a9b-11e7-8317-0ba787b38d9c",
+    "_type": "dashboard",
+    "_source": {
+      "title": "Rides dashboard",
+      "hits": 0,
+      "description": "",
+      "panelsJSON": "[{\"col\":1,\"id\":\"6eee36f0-6a9b-11e7-8317-0ba787b38d9c\",\"panelIndex\":1,\"row\":1,\"size_x\":5,\"size_y\":7,\"type\":\"visualization\"},{\"col\":6,\"id\":\"aa63c5b0-6a9b-11e7-8317-0ba787b38d9c\",\"panelIndex\":2,\"row\":1,\"size_x\":7,\"size_y\":7,\"type\":\"visualization\"},{\"col\":1,\"id\":\"4686fab0-69f3-11e7-8059-93b680b26037\",\"panelIndex\":3,\"row\":8,\"size_x\":12,\"size_y\":4,\"type\":\"visualization\"}]",
+      "optionsJSON": "{\"darkTheme\":false}",
+      "uiStateJSON": "{\"P-1\":{\"vis\":{\"params\":{\"sort\":{\"columnIndex\":6,\"direction\":\"asc\"}}}}}",
+      "version": 1,
+      "timeRestore": false,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[{\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}}}],\"highlightAll\":true,\"version\":true}"
+      }
+    }
+  },
+  {
+    "_id": "5daf9680-69f2-11e7-8059-93b680b26037",
+    "_type": "search",
+    "_source": {
+      "title": "Rides with waittimes",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "tags",
+        "ride_name",
+        "wait_time",
+        "status",
+        "park"
+      ],
+      "sort": [
+        "@timestamp",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"disney*\",\"highlightAll\":true,\"version\":true,\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}},\"filter\":[{\"meta\":{\"index\":\"disney*\",\"negate\":false,\"disabled\":false,\"alias\":null,\"type\":\"phrase\",\"key\":\"status.keyword\",\"value\":\"Operating\"},\"query\":{\"match\":{\"status.keyword\":{\"query\":\"Operating\",\"type\":\"phrase\"}}},\"$state\":{\"store\":\"appState\"}},{\"meta\":{\"index\":\"disney*\",\"negate\":true,\"disabled\":false,\"alias\":null,\"type\":\"phrase\",\"key\":\"wait_time\",\"value\":\"0\"},\"query\":{\"match\":{\"wait_time\":{\"query\":0,\"type\":\"phrase\"}}},\"$state\":{\"store\":\"appState\"}}]}"
+      }
+    }
+  },
+  {
+    "_id": "a09bd280-69f5-11e7-8059-93b680b26037",
+    "_type": "search",
+    "_source": {
+      "title": "Rides down",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "tags",
+        "ride_name",
+        "wait_time",
+        "status",
+        "park"
+      ],
+      "sort": [
+        "@timestamp",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"disney*\",\"highlightAll\":true,\"version\":true,\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}},\"filter\":[{\"meta\":{\"index\":\"disney*\",\"negate\":false,\"disabled\":false,\"alias\":null,\"type\":\"phrase\",\"key\":\"status.keyword\",\"value\":\"Down\"},\"query\":{\"match\":{\"status.keyword\":{\"query\":\"Down\",\"type\":\"phrase\"}}},\"$state\":{\"store\":\"appState\"}}]}"
+      }
+    }
+  },
+  {
+    "_id": "900dfc80-69f1-11e7-8b69-9fb4f5ce0067",
+    "_type": "visualization",
+    "_source": {
+      "title": "Disneyland wait time by rides",
+      "visState": "{\"title\":\"Disneyland wait time by rides\",\"type\":\"line\",\"params\":{\"grid\":{\"categoryLines\":true,\"style\":{\"color\":\"#eee\"},\"valueAxis\":\"ValueAxis-1\"},\"categoryAxes\":[{\"id\":\"CategoryAxis-1\",\"type\":\"category\",\"position\":\"bottom\",\"show\":true,\"style\":{},\"scale\":{\"type\":\"linear\"},\"labels\":{\"show\":true,\"truncate\":100,\"filter\":false},\"title\":{\"text\":\"@timestamp per 10 minutes\"}}],\"valueAxes\":[{\"id\":\"ValueAxis-1\",\"name\":\"LeftAxis-1\",\"type\":\"value\",\"position\":\"left\",\"show\":true,\"style\":{},\"scale\":{\"type\":\"linear\",\"mode\":\"normal\",\"defaultYExtents\":false,\"setYExtents\":false},\"labels\":{\"show\":true,\"rotate\":0,\"filter\":false,\"truncate\":100},\"title\":{\"text\":\"Average wait_time\"}}],\"seriesParams\":[{\"show\":true,\"mode\":\"normal\",\"type\":\"line\",\"drawLinesBetweenPoints\":true,\"showCircles\":true,\"interpolate\":\"linear\",\"lineWidth\":2,\"data\":{\"id\":\"4\",\"label\":\"Average wait_time\"},\"valueAxis\":\"ValueAxis-1\"}],\"addTooltip\":true,\"addLegend\":true,\"legendPosition\":\"right\",\"times\":[],\"addTimeMarker\":false},\"aggs\":[{\"id\":\"2\",\"enabled\":true,\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}},{\"id\":\"3\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"ride_name.keyword\",\"size\":50,\"order\":\"desc\",\"orderBy\":\"4\"}},{\"id\":\"4\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"wait_time\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"disney*\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[{\"meta\":{\"index\":\"disney*\",\"negate\":false,\"disabled\":false,\"alias\":null,\"type\":\"phrase\",\"key\":\"park.keyword\",\"value\":\"Disneyland\"},\"query\":{\"match\":{\"park.keyword\":{\"query\":\"Disneyland\",\"type\":\"phrase\"}}},\"$state\":{\"store\":\"appState\"}},{\"meta\":{\"index\":\"disney*\",\"negate\":false,\"disabled\":false,\"alias\":null,\"type\":\"phrase\",\"key\":\"status.keyword\",\"value\":\"Operating\"},\"query\":{\"match\":{\"status.keyword\":{\"query\":\"Operating\",\"type\":\"phrase\"}}},\"$state\":{\"store\":\"appState\"}},{\"meta\":{\"index\":\"disney*\",\"negate\":true,\"disabled\":false,\"alias\":null,\"type\":\"range\",\"key\":\"wait_time\",\"value\":\"0 to 9\"},\"range\":{\"wait_time\":{\"gte\":0,\"lt\":9}},\"$state\":{\"store\":\"appState\"}}]}"
+      }
+    }
+  },
+  {
+    "_id": "1b6d4000-69f8-11e7-8059-93b680b26037",
+    "_type": "visualization",
+    "_source": {
+      "title": "Rides data table",
+      "visState": "{\"title\":\"Rides data table\",\"type\":\"table\",\"params\":{\"perPage\":50,\"showPartialRows\":false,\"showMeticsAtAllLevels\":false,\"sort\":{\"columnIndex\":null,\"direction\":null},\"showTotal\":true,\"totalFunc\":\"avg\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"wait_time\"}},{\"id\":\"3\",\"enabled\":true,\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"wait_time\"}},{\"id\":\"4\",\"enabled\":true,\"type\":\"median\",\"schema\":\"metric\",\"params\":{\"field\":\"wait_time\",\"percents\":[50]}},{\"id\":\"6\",\"enabled\":true,\"type\":\"percentile_ranks\",\"schema\":\"metric\",\"params\":{\"field\":\"wait_time\",\"values\":[15,30,45]}},{\"id\":\"5\",\"enabled\":true,\"type\":\"std_dev\",\"schema\":\"metric\",\"params\":{\"field\":\"wait_time\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"ride_name.keyword\",\"size\":50,\"order\":\"desc\",\"orderBy\":\"1\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\"vis\":{\"params\":{\"sort\":{\"columnIndex\":6,\"direction\":\"asc\"}}}}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"disney*\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[{\"meta\":{\"index\":\"disney*\",\"negate\":false,\"disabled\":false,\"alias\":null,\"type\":\"phrase\",\"key\":\"status.keyword\",\"value\":\"Operating\"},\"query\":{\"match\":{\"status.keyword\":{\"query\":\"Operating\",\"type\":\"phrase\"}}},\"$state\":{\"store\":\"appState\"}}]}"
+      }
+    }
+  },
+  {
+    "_id": "aa63c5b0-6a9b-11e7-8317-0ba787b38d9c",
+    "_type": "visualization",
+    "_source": {
+      "title": "wait time by rides",
+      "visState": "{\"title\":\"wait time by rides\",\"type\":\"line\",\"params\":{\"grid\":{\"categoryLines\":true,\"style\":{\"color\":\"#eee\"},\"valueAxis\":\"ValueAxis-1\"},\"categoryAxes\":[{\"id\":\"CategoryAxis-1\",\"type\":\"category\",\"position\":\"bottom\",\"show\":true,\"style\":{},\"scale\":{\"type\":\"linear\"},\"labels\":{\"show\":true,\"truncate\":100,\"filter\":false},\"title\":{\"text\":\"@timestamp per 10 minutes\"}}],\"valueAxes\":[{\"id\":\"ValueAxis-1\",\"name\":\"LeftAxis-1\",\"type\":\"value\",\"position\":\"left\",\"show\":true,\"style\":{},\"scale\":{\"type\":\"linear\",\"mode\":\"normal\",\"defaultYExtents\":false,\"setYExtents\":false},\"labels\":{\"show\":true,\"rotate\":0,\"filter\":false,\"truncate\":100},\"title\":{\"text\":\"Average wait_time\"}}],\"seriesParams\":[{\"show\":true,\"mode\":\"normal\",\"type\":\"line\",\"drawLinesBetweenPoints\":true,\"showCircles\":true,\"interpolate\":\"linear\",\"lineWidth\":2,\"data\":{\"id\":\"4\",\"label\":\"Average wait_time\"},\"valueAxis\":\"ValueAxis-1\"}],\"addTooltip\":true,\"addLegend\":true,\"legendPosition\":\"right\",\"times\":[],\"addTimeMarker\":false},\"aggs\":[{\"id\":\"2\",\"enabled\":true,\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}},{\"id\":\"3\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"ride_name.keyword\",\"size\":50,\"order\":\"desc\",\"orderBy\":\"4\"}},{\"id\":\"4\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"wait_time\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"disney*\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[{\"meta\":{\"index\":\"disney*\",\"negate\":false,\"disabled\":false,\"alias\":null,\"type\":\"phrase\",\"key\":\"status.keyword\",\"value\":\"Operating\"},\"query\":{\"match\":{\"status.keyword\":{\"query\":\"Operating\",\"type\":\"phrase\"}}},\"$state\":{\"store\":\"appState\"}}]}"
+      }
+    }
+  },
+  {
+    "_id": "6eee36f0-6a9b-11e7-8317-0ba787b38d9c",
+    "_type": "visualization",
+    "_source": {
+      "title": "Rides data table small",
+      "visState": "{\"title\":\"Rides data table small\",\"type\":\"table\",\"params\":{\"perPage\":50,\"showMeticsAtAllLevels\":false,\"showPartialRows\":false,\"showTotal\":true,\"sort\":{\"columnIndex\":null,\"direction\":null},\"totalFunc\":\"avg\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"wait_time\"}},{\"id\":\"3\",\"enabled\":true,\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"wait_time\"}},{\"id\":\"4\",\"enabled\":true,\"type\":\"median\",\"schema\":\"metric\",\"params\":{\"field\":\"wait_time\",\"percents\":[50],\"customLabel\":\"\"}},{\"id\":\"7\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"park.keyword\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Park\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"ride_name.keyword\",\"size\":50,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Ride\"}}],\"listeners\":{}}",
+      "uiStateJSON": "{\"vis\":{\"params\":{\"sort\":{\"columnIndex\":6,\"direction\":\"asc\"}}}}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"disney*\",\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}},\"filter\":[{\"meta\":{\"index\":\"disney*\",\"negate\":false,\"disabled\":false,\"alias\":null,\"type\":\"phrase\",\"key\":\"status.keyword\",\"value\":\"Operating\"},\"query\":{\"match\":{\"status.keyword\":{\"query\":\"Operating\",\"type\":\"phrase\"}}},\"$state\":{\"store\":\"appState\"}}]}"
+      }
+    }
+  },
+  {
+    "_id": "4686fab0-69f3-11e7-8059-93b680b26037",
+    "_type": "visualization",
+    "_source": {
+      "title": "Top rides down date histogram",
+      "visState": "{\"title\":\"Top rides down date histogram\",\"type\":\"histogram\",\"params\":{\"addLegend\":true,\"addTimeMarker\":false,\"addTooltip\":true,\"categoryAxes\":[{\"id\":\"CategoryAxis-1\",\"labels\":{\"show\":true,\"truncate\":100},\"position\":\"bottom\",\"scale\":{\"type\":\"linear\"},\"show\":true,\"style\":{},\"title\":{\"text\":\"@timestamp per 5 minutes\"},\"type\":\"category\"}],\"grid\":{\"categoryLines\":true,\"style\":{\"color\":\"#eee\"},\"valueAxis\":null},\"legendPosition\":\"right\",\"seriesParams\":[{\"data\":{\"id\":\"1\",\"label\":\"Count\"},\"drawLinesBetweenPoints\":true,\"mode\":\"stacked\",\"show\":\"true\",\"showCircles\":true,\"type\":\"histogram\",\"valueAxis\":\"ValueAxis-1\"}],\"times\":[],\"valueAxes\":[{\"id\":\"ValueAxis-1\",\"labels\":{\"filter\":false,\"rotate\":0,\"show\":false,\"truncate\":100},\"name\":\"LeftAxis-1\",\"position\":\"left\",\"scale\":{\"mode\":\"normal\",\"type\":\"linear\",\"defaultYExtents\":false},\"show\":true,\"style\":{},\"title\":{\"text\":\"\"},\"type\":\"value\"}]},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"enabled\":true,\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}},{\"id\":\"3\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"split\",\"params\":{\"field\":\"ride_name.keyword\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\",\"row\":true}}],\"listeners\":{}}",
+      "uiStateJSON": "{\"vis\":{\"legendOpen\":true},\"spy\":{\"mode\":{\"name\":null,\"fill\":false}}}",
+      "description": "",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"disney*\",\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}},\"filter\":[{\"$state\":{\"store\":\"appState\"},\"meta\":{\"alias\":null,\"disabled\":false,\"index\":\"disney*\",\"key\":\"status.keyword\",\"negate\":false,\"type\":\"phrase\",\"value\":\"Down\"},\"query\":{\"match\":{\"status.keyword\":{\"query\":\"Down\",\"type\":\"phrase\"}}}}]}"
+      }
+    }
+  }
+]
