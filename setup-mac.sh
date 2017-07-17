@@ -7,14 +7,17 @@ brew install elasticsearch
 brew install logstash
 brew install kibana
 
-# install a free basic license to elasticsearch.  Assumes license in the same directory as this script is run.
-curl -XPUT -u elastic 'http://localhost:9200/_xpack/license' -H "Content-Type: application/json" -d @license.json
-#curl -XPUT -u elastic 'http://localhost:9200/_xpack/license' -H "Content-Type: application/json" -d @bryan-gebhardt-8841b060-2be9-4cd9-a113-2d70498183d6-v5.json
-
-# install the management plugin.
+# install the management plugins.
 elasticsearch-plugin install x-pack
 kibana-plugin install x-pack
 logstash-plugin install x-pack
+
+# start elasticsearch
+elasticsearch &
+
+# install a free basic license to elasticsearch.  Assumes license in the same directory as this script is run.
+curl -XPUT -u elastic 'http://localhost:9200/_xpack/license' -H "Content-Type: application/json" -d @license.json
+#curl -XPUT -u elastic 'http://localhost:9200/_xpack/license' -H "Content-Type: application/json" -d @bryan-gebhardt-8841b060-2be9-4cd9-a113-2d70498183d6-v5.json
 
 # now you can:
 # Navigate to Kibana at http://localhost:5601/
