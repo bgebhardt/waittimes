@@ -12,7 +12,7 @@ var Disneyland = new DisneyAPI.DisneylandMagicKingdom();
 var DisneyCA = new DisneyAPI.DisneylandCaliforniaAdventure();
 
 // print csv header
-console.log("park, ride_name, wait_time, status, date-time");
+console.log("park, ride_name, wait_time, status, date-time, fast_pass");
 
 // Get Magic Kingdom wait times
 Disneyland.GetWaitTimes(function(err, data) {
@@ -45,7 +45,7 @@ function printWaitTimesCSV(parkName, waitTimeArray, dateTime) {
       var ride = waitTimeArray[index];
 	  // escaping quotes in ride names to be "" instead of single "'s.  Ruby csv importer requires that instead of \".  See:
 	  // [Ruby CSV parsing string with escaped quotes - Stack Overflow](https://stackoverflow.com/questions/14534522/ruby-csv-parsing-string-with-escaped-quotes)
-      console.log("\"" + parkName + "\",\"" + ride.name.replace(/\"/g,'\""') + "\",\"" + ride.waitTime + "\",\"" + ride.status + "\",\"" + dateTime + "\"");
+      console.log("\"" + parkName + "\",\"" + ride.name.replace(/\"/g,'\""') + "\",\"" + ride.waitTime + "\",\"" + ride.status + "\",\"" + dateTime + "\",\"" + ride.fastPass.toString() + "\"");
     }
   }
 }
@@ -58,3 +58,16 @@ MagicKingdom.GetOpeningTimes(function(err, data) {
   console.log(JSON.stringify(data, null, 2));
 });
 */
+
+// Example raid info from API
+// { id: '367492',
+//   name: '"it\'s a small world"',
+//   waitTime: 5,
+//   active: true,
+//   status: 'Operating',
+//   fastPass: false,
+//   schedule:
+//    { openingTime: '2017-07-22T08:00:00-07:00',
+//      closingTime: '2017-07-23T00:00:00-07:00',
+//      special: [],
+//      type: 'Operating' } },
