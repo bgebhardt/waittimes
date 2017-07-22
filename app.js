@@ -34,6 +34,7 @@ function printParkInfo(parkName, waitTimeArray) {
 //  console.log("wait times: " + waitTimeArray.length);
   var currentdate = new Date();
 //  console.log(currentdate);
+// console.log(waitTimeArray) // uncomment this line to see the JSON reponses; for testing
   printWaitTimesCSV(parkName, waitTimeArray, currentdate);
   // console.log(JSON.stringify(DisneylandWaitTimes, null, 2));
 }
