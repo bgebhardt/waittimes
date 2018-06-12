@@ -2,24 +2,38 @@
 
 TODO: come up with better name
 
-This is a set of scripts to grab waittimes for parks supported by the [wdwJS](https://github.com/cubehouse/wdwJS) node library.
+This is a set of scripts to grab waittimes for parks supported by the [themeparks](https://github.com/cubehouse/themeparks) node library.
 
-* [cubehouse/wdwJS: Unofficial API for accessing ride wait times and schedules for Disney theme parks]( https://github.com/cubehouse/wdwJS )
+Reference Links:
+* [GitHub - cubehouse/themeparks: Unofficial API for accessing ride wait times and schedules for Disneyland, Disney World, Universal Studios, and many more parks](https://github.com/cubehouse/themeparks)
+* [Migrating from 3.0 to 4.0 · cubehouse/themeparks Wiki · GitHub](https://github.com/cubehouse/themeparks/wiki/Migrating-from-3.0-to-4.0)
+* [cubehouse/wdwJS: DEPRECATED - Moved to cubehouse/themeparks](https://github.com/cubehouse/wdwJS) - Unofficial API for accessing ride wait times and schedules for Disney theme parks
 
-## Collecting the data
+## Installing and Collecting data
 
-*app.js* will output the wait times for Disneyland and California Adventure in csv format. Call it like this:
+1. **Install the npm**
+```
+npm install themeparks --save
+npm install cache-manager --save
+npm install cache-manager-fs-binary --save
+```
+
+2. **Run the wait_times.js script**
+*wait_times.js* will output the wait times for Disneyland, California Adventure, and Universal Hollywood Studios in csv format. Call it like this:
 
 ```
-/usr/local/bin/node app.js >disney_out/`date +%F-%T`.csv 2>>/tmp/disney_stderr.log
-``` 
+/usr/local/bin/node wait_times.js >disney_out/`date +%F-%T`.csv 2>>/tmp/disney_stderr.log
+```
 
+3. **Install as a Cronjob**
 *run_disney.sh* - simple script you can put in cron to run the script periodically.
 
-Add the following crontab entry to run it [every 5 minutes](https://crontab.guru/every-5-minutes).
+Add the following crontab entry to run it [every 5 minutes](https://crontab.guru/every-5-minutes).  The time command will help with debugging long runs.
 ```
-*/5	*	*	*	*	/Users/bryan/code/personal/waittimes/run_disney.sh
+*/5	*	*	*	*	/usr/bin/time /Users/bryan/code/personal/waittimes/run_disney.sh 2>|/tmp/disney_time.log
 ```
+
+Use ```tail -F /tmp/disney_time.log``` to watch the running time to debug long running time.
 
 *run disney script.scpt* - a simple AppleScript that runs the command.  No longer needed.
 
@@ -83,6 +97,9 @@ $ ../python/rideWaitAnalysis.py all_2016-07-20.csv
 
 # TODO
 
+* Features
+	* Add fast pass return times
+	* Check if ride is active or not
 * Data Collection
 	* create a better way to collect the data; node daemon process? get it working with cron?
 * Data clean up
