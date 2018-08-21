@@ -11,7 +11,7 @@ Themeparks.Settings.Cache = cacheManager.caching({
     reviveBuffers: false,
     binaryAsStream: true,
     ttl: 60 * 60,
-    maxsize: 1000 * 1000 * 1000,
+    maxsize: 1000 * 1000 * 10, // make it 10 MB cache
     path: '/Users/bryan/code/personal/waittimes/diskcache',
     preventfill: false
   }
