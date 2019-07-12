@@ -3,20 +3,6 @@
 // include the Themeparks library
 var Themeparks = require("themeparks");
 
-// initialise caching (see https://github.com/BryanDonovan/node-cache-manager)
-var cacheManager = require('cache-manager');
-Themeparks.Settings.Cache = cacheManager.caching({
-  store: require('cache-manager-fs-binary'),
-  options: {
-    reviveBuffers: false,
-    binaryAsStream: true,
-    ttl: 60 * 60,
-    maxsize: 1000 * 1000 * 10, // make it 10 MB cache
-    path: '/Users/bryan/code/personal/waittimes/diskcache',
-    preventfill: false
-  }
-});
-
 // list all the parks supported by the library
 // for (var park in Themeparks.Parks) {
 //     console.log("* " + new Themeparks.Parks[park]().Name + " (DisneyAPI." + park + ")");
