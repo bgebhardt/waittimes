@@ -2,6 +2,12 @@
 
 // include the Themeparks library
 var Themeparks = require("themeparks");
+var process = require('process');
+
+// for debugging
+console.error("process id = " + process.pid);
+
+Themeparks.Settings.CacheWaitTimesLength = 60 * 2; // set to 2 minutes
 
 // list all the parks supported by the library
 // for (var park in Themeparks.Parks) {
@@ -20,23 +26,34 @@ var universalStudiosHollywood =
 console.log("park, ride_name, wait_time, status, date-time, fast_pass");
 
 // access wait times by Promise
-Disneyland.GetWaitTimes().then(function(rides) {
-  printParkInfo("Disneyland", rides);
+const CheckDisneylandTimes = () => {
+  Disneyland.GetWaitTimes().then((rides) => {
+    printParkInfo("Disneyland", rides);
+  }).catch((error) => {
+      console.error(error);
+  });
+};
+CheckDisneylandTimes();
 
-  // print each wait time
-  // for(var i=0, ride; ride=rides[i++];) {
-  //     console.log(ride.name + ": " + ride.waitTime + " minutes wait");
-  // }
-}, console.error);
+// Access wait times by Promise
+const CheckDisneyCATimes = () => {
+  DisneyCA.GetWaitTimes().then((rides) => {
+    printParkInfo("California Adventure", rides);
+  }).catch((error) => {
+      console.error(error);
+  });
+};
+CheckDisneyCATimes();
 
-// access wait times by Promise
-DisneyCA.GetWaitTimes().then(function(rides) {
-  printParkInfo("California Adventure", rides);
-}, console.error);
-
-universalStudiosHollywood.GetWaitTimes().then(function(rides) {
-  printParkInfo("Universal Studios Hollywood", rides);
-}, console.error);
+// Access wait times by Promise
+const CheckUniversalStudiosHollywoodTimes = () => {
+  universalStudiosHollywood.GetWaitTimes().then((rides) => {
+    printParkInfo("Universal Studios Hollywood", rides);
+  }).catch((error) => {
+      console.error(error);
+  });
+};
+CheckUniversalStudiosHollywoodTimes();
 
 function printParkInfo(parkName, waitTimeArray) {
 //  console.log("=============================");
