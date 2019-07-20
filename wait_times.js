@@ -5,7 +5,7 @@ var Themeparks = require("themeparks");
 var process = require('process');
 
 // for debugging
-console.error("process id = " + process.pid);
+//console.error("### process id = " + process.pid);
 
 Themeparks.Settings.CacheWaitTimesLength = 60 * 2; // set to 2 minutes
 
@@ -75,3 +75,11 @@ function printWaitTimesCSV(parkName, waitTimeArray, dateTime) {
     }
   }
 }
+
+// force an exit after 2 minutes to avoid process leaks
+// [How to Exit in Node.js](https://stackabuse.com/how-to-exit-in-node-js/)
+// this command can be used to kill any processes (saving here as FYI only)
+//  ps -A | grep node | grep wait | awk '{print $1}' | xargs kill
+setTimeout((function() {
+  return process.exit();
+}), 2 * 60 * 1000);
