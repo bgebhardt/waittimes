@@ -4,12 +4,14 @@
   "description": "Disney wait time program",
   "main": "app.js",
   "dependencies": {
+    "azure-storage": "^2.10.3",
     "cache-manager": "^2.10.0",
     "cache-manager-fs-binary": "^1.0.4",
     "jshint": "^2.9.2",
     "npm": "^6.10.1",
     "themeparks": "^5.1.11",
-    "wdwjs": "^3.1.6"
+    "wdwjs": "^3.1.6",
+    "why-is-node-running": "^2.1.0"
   },
   "devDependencies": {
     "eslint": "^6.0.1",
