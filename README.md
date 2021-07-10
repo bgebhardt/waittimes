@@ -37,6 +37,15 @@ Use ```tail -F /tmp/disney_time.log``` to watch the running time to debug long r
 
 *run disney script.scpt* - a simple AppleScript that runs the command.  No longer needed.
 
+### Issues updating after a long while on 05-31-2021
+
+Got errors in updating node modules.  This command worked. Seen in http://blog.wafrat.com/fixing-2/.
+```
+npm update --legacy-peer-deps
+```
+
+There's probably a better way to fix it but it's running now.  
+
 ## Loading data into ELK stack
 
 ### Running it
